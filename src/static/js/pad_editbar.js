@@ -68,7 +68,7 @@ ToolbarItem.prototype.bind = function (callback) {
 
   if (self.isButton()) {
     self.$el.click((event) => {
-      $(':focus').blur();
+      $(':focus').trigger('blur');
       callback(self.getCommand(), self);
       event.preventDefault();
     });
@@ -314,11 +314,11 @@ const padeditbar = (function () {
         if (typeof pad === 'undefined') {
           // Timeslider probably..
           // Shift focus away from any drop downs
-          $(':focus').blur(); // required to do not try to remove!
+          $(':focus').trigger('blur'); // required to do not try to remove!
           $('#editorcontainerbox').focus(); // Focus back onto the pad
         } else {
           // Shift focus away from any drop downs
-          $(':focus').blur(); // required to do not try to remove!
+          $(':focus').trigger('blur'); // required to do not try to remove!
           padeditor.ace.focus(); // Sends focus back to pad
           // The above focus doesn't always work in FF, you have to hit enter afterwards
           evt.preventDefault();
@@ -327,7 +327,7 @@ const padeditbar = (function () {
         // Focus on the editbar :)
         const firstEditbarElement = parent.parent.$('#editbar button').first();
 
-        $(this).blur();
+        $(this).trigger('blur');
         firstEditbarElement.focus();
         evt.preventDefault();
       }

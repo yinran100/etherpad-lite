@@ -106,7 +106,7 @@ helper.setUserName = async (name) => {
   const userElement = helper.usernameField();
   userElement.click();
   userElement.val(name);
-  userElement.blur();
+  userElement.trigger('blur');
   await helper.waitForPromise(() => !helper.usernameField().hasClass('editactive'));
 };
 

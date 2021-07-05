@@ -260,7 +260,7 @@ const padutils = {
       }
       field.removeClass('editempty');
     });
-    field.blur(() => {
+    field.on('blur', () => {
       if (!field.val()) {
         clear();
       }

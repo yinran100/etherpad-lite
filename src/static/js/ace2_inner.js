@@ -2727,7 +2727,7 @@ function Ace2Inner(editorInfo, cssManagers) {
           const firstEditbarElement = parent.parent.$('#editbar')
               .children('ul').first().children().first()
               .children().first().children().first();
-          $(this).blur();
+          $(this).trigger('blur');
           firstEditbarElement.focus();
           evt.preventDefault();
         }
@@ -2738,7 +2738,7 @@ function Ace2Inner(editorInfo, cssManagers) {
           padShortcutEnabled.altC
         ) {
           // Alt c focuses on the Chat window
-          $(this).blur();
+          $(this).trigger('blur');
           parent.parent.chat.show();
           parent.parent.$('#chatinput').focus();
           evt.preventDefault();

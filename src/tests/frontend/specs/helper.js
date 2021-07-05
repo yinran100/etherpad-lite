@@ -53,7 +53,7 @@ describe('the test helper', function () {
       $usernameInput.click();
 
       $usernameInput.val('John McLear');
-      $usernameInput.blur();
+      $usernameInput.trigger('blur');
 
       // Before refreshing, make sure the name is there
       expect($usernameInput.val()).to.be('John McLear');

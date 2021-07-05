@@ -337,9 +337,9 @@ const paduserlist = (() => {
       valueSetter(newValue);
     });
     padutils.bindEnterAndEscape(jqueryNode, () => {
-      jqueryNode.blur();
+      jqueryNode.trigger('blur');
     }, () => {
-      jqueryNode.val(valueGetter()).blur();
+      jqueryNode.val(valueGetter()).trigger('blur');
     });
     jqueryNode.removeAttr('disabled').addClass('editable');
   };
