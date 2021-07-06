@@ -236,13 +236,13 @@ const loadBroadcastSliderJS = (fireWhenAllScriptsAreLoaded) => {
       });
 
       // Slider click
-      $('#ui-slider-bar').mousedown((evt) => {
+      $('#ui-slider-bar').on('mousedown', (evt) => {
         $('#ui-slider-handle').css('left', (evt.clientX - $('#ui-slider-bar').offset().left));
         $('#ui-slider-handle').trigger(evt);
       });
 
       // Slider dragging
-      $('#ui-slider-handle').mousedown(function (evt) {
+      $('#ui-slider-handle').on('mousedown', function (evt) {
         this.startLoc = evt.clientX;
         this.currentLoc = parseInt($(this).css('left'));
         sliderActive = true;
