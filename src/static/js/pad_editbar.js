@@ -169,7 +169,7 @@ const padeditbar = (function () {
       }
 
       // When editor is scrolled, we add a class to style the editbar differently
-      $('iframe[name="ace_outer"]').contents().scroll(function () {
+      $('iframe[name="ace_outer"]').contents().trigger('scroll', function () {
         $('#editbar').toggleClass('editor-scrolled', $(this).scrollTop() > 2);
       });
     },
