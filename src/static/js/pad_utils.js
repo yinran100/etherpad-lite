@@ -185,7 +185,7 @@ const padutils = {
     // It is work on Windows (IE8, Chrome 6.0.472), CentOs (Firefox 3.0) and Mac OSX (Firefox
     // 3.6.10, Chrome 6.0.472, Safari 5.0).
     if (onEnter) {
-      node.keypress((evt) => {
+      node.on('keypress', (evt) => {
         if (evt.which === 13) {
           onEnter(evt);
         }
