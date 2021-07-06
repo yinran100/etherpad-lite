@@ -193,7 +193,7 @@ const padutils = {
     }
 
     if (onEscape) {
-      node.keydown((evt) => {
+      node.on('keydown', (evt) => {
         if (evt.which === 27) {
           onEscape(evt);
         }
