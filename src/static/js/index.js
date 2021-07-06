@@ -41,7 +41,7 @@ const randomPadName = () => {
 };
 
 $(() => {
-  $('#go2Name').submit(() => {
+  $('#go2Name').on('submit', () => {
     const padname = $('#padname').val();
     if (padname.length > 0) {
       window.location = `p/${encodeURIComponent(padname.trim())}`;

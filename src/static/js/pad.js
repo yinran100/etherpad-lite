@@ -725,7 +725,7 @@ const pad = {
     $('form#reconnectform input.diagnosticInfo').val(JSON.stringify(pad.diagnosticInfo));
     $('form#reconnectform input.missedChanges')
         .val(JSON.stringify(pad.collabClient.getMissedChanges()));
-    $('form#reconnectform').submit();
+    $('form#reconnectform').trigger('submit');
   },
   callWhenNotCommitting: (f) => {
     pad.collabClient.callWhenNotCommitting(f);
