@@ -246,7 +246,7 @@ const loadBroadcastSliderJS = (fireWhenAllScriptsAreLoaded) => {
         this.startLoc = evt.clientX;
         this.currentLoc = parseInt($(this).css('left'));
         sliderActive = true;
-        $(document).mousemove((evt2) => {
+        $(document).on('mousemove', (evt2) => {
           $(this).css('pointer', 'move');
           let newloc = this.currentLoc + (evt2.clientX - this.startLoc);
           if (newloc < 0) newloc = 0;
