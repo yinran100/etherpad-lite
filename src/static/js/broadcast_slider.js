@@ -231,7 +231,7 @@ const loadBroadcastSliderJS = (fireWhenAllScriptsAreLoaded) => {
       });
 
       // Resize
-      $(window).resize(() => {
+      $(window).on('resize', () => {
         updateSliderElements();
       });
 

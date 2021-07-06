@@ -149,7 +149,7 @@ const padeditbar = (function () {
         $('.toolbar').toggleClass('full-icons');
       });
       self.checkAllIconsAreDisplayedInToolbar();
-      $(window).resize(_.debounce(self.checkAllIconsAreDisplayedInToolbar, 100));
+      $(window).on('resize', _.debounce(self.checkAllIconsAreDisplayedInToolbar, 100));
 
       registerDefaultCommands(self);
 
