@@ -67,7 +67,7 @@ const loadBroadcastSliderJS = (fireWhenAllScriptsAreLoaded) => {
       newSavedRevision.css(
           'left', (position * ($('#ui-slider-bar').width() - 2) / (sliderLength * 1.0)) - 1);
       $('#ui-slider-bar').append(newSavedRevision);
-      newSavedRevision.mouseup((evt) => {
+      newSavedRevision.on('mouseup', (evt) => {
         BroadcastSlider.setSliderPosition(position);
       });
       savedRevisions.push(newSavedRevision);
@@ -257,7 +257,7 @@ const loadBroadcastSliderJS = (fireWhenAllScriptsAreLoaded) => {
           $(this).css('left', newloc);
           if (getSliderPosition() !== version) _callSliderCallbacks(version);
         });
-        $(document).mouseup((evt2) => {
+        $(document).on('mouseup', (evt2) => {
           $(document).unbind('mousemove');
           $(document).unbind('mouseup');
           sliderActive = false;
