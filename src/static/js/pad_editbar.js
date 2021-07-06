@@ -403,7 +403,7 @@ const padeditbar = (function () {
     toolbar.registerCommand('embed', () => {
       toolbar.setEmbedLinks();
       toolbar.toggleDropDown('embed', () => {
-        $('#linkinput').trigger('focus').select();
+        $('#linkinput').trigger('focus').trigger('select');
       });
     });
 
