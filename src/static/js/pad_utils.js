@@ -278,7 +278,7 @@ const padutils = {
     }
   },
   bindCheckboxChange: (node, func) => {
-    $(node).change(func);
+    $(node).on('change', func);
   },
   encodeUserId: (userId) => userId.replace(/[^a-y0-9]/g, (c) => {
     if (c === '.') return '-';

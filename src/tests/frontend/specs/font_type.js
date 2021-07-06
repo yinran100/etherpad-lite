@@ -21,7 +21,7 @@ describe('font select', function () {
     // $RobotoMonooption.attr('selected','selected');
     // commenting out above will break safari test
     $viewfontmenu.val('RobotoMono');
-    $viewfontmenu.change();
+    $viewfontmenu.trigger('change');
 
     // check if font changed to RobotoMono
     const fontFamily = inner$('body').css('font-family').toLowerCase();

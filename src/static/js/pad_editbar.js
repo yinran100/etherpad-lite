@@ -73,7 +73,7 @@ ToolbarItem.prototype.bind = function (callback) {
       event.preventDefault();
     });
   } else if (self.isSelect()) {
-    self.$el.find('select').change(() => {
+    self.$el.find('select').on('change', () => {
       callback(self.getCommand(), self);
     });
   }

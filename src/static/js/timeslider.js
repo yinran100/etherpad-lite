@@ -152,7 +152,7 @@ const handleClientVars = (message) => {
   $('#rightstep').attr('title', html10n.get('timeslider.forwardRevision'));
 
   // font family change
-  $('#viewfontmenu').change(function () {
+  $('#viewfontmenu').on('change', function () {
     $('#innerdocbody').css('font-family', $(this).val() || '');
   });
 };
