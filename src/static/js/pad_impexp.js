@@ -163,7 +163,7 @@ const padimpexp = (() => {
 
       addImportFrames();
       $('#importfileinput').on('change', fileInputUpdated);
-      $('#importform').unbind('submit').on('submit', fileInputSubmit);
+      $('#importform').off('submit').on('submit', fileInputSubmit);
       $('.disabledexport').on('click', cantExport);
     },
     disable: () => {

@@ -258,8 +258,8 @@ const loadBroadcastSliderJS = (fireWhenAllScriptsAreLoaded) => {
           if (getSliderPosition() !== version) _callSliderCallbacks(version);
         });
         $(document).on('mouseup', (evt2) => {
-          $(document).unbind('mousemove');
-          $(document).unbind('mouseup');
+          $(document).off('mousemove');
+          $(document).off('mouseup');
           sliderActive = false;
           let newloc = this.currentLoc + (evt2.clientX - this.startLoc);
           if (newloc < 0) newloc = 0;

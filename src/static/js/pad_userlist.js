@@ -325,14 +325,14 @@ const paduserlist = (() => {
   };
 
   const setUpEditable = (jqueryNode, valueGetter, valueSetter) => {
-    jqueryNode.bind('focus', (evt) => {
+    jqueryNode.on('focus', (evt) => {
       const oldValue = valueGetter();
       if (jqueryNode.val() !== oldValue) {
         jqueryNode.val(oldValue);
       }
       jqueryNode.addClass('editactive').removeClass('editempty');
     });
-    jqueryNode.bind('blur', (evt) => {
+    jqueryNode.on('blur', (evt) => {
       const newValue = jqueryNode.removeClass('editactive').val();
       valueSetter(newValue);
     });
@@ -587,7 +587,7 @@ const showColorPicker = () => {
 
         li.appendTo(colorsList);
 
-        li.bind('click', (event) => {
+        li.on('click', (event) => {
           $('#colorpickerswatches li').removeClass('picked');
           $(event.target).addClass('picked');
 

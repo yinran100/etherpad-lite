@@ -135,7 +135,7 @@ const padeditbar = (function () {
       $('#editbar .editbarbutton').attr('unselectable', 'on'); // for IE
       this.enable();
       $('#editbar [data-key]').each(function () {
-        $(this).unbind('click');
+        $(this).off('click');
         (new ToolbarItem($(this))).bind((command, item) => {
           self.triggerCommand(command, item);
         });
