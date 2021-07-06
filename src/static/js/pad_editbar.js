@@ -315,7 +315,7 @@ const padeditbar = (function () {
           // Timeslider probably..
           // Shift focus away from any drop downs
           $(':focus').trigger('blur'); // required to do not try to remove!
-          $('#editorcontainerbox').focus(); // Focus back onto the pad
+          $('#editorcontainerbox').trigger('focus'); // Focus back onto the pad
         } else {
           // Shift focus away from any drop downs
           $(':focus').trigger('blur'); // required to do not try to remove!
@@ -328,7 +328,7 @@ const padeditbar = (function () {
         const firstEditbarElement = parent.parent.$('#editbar button').first();
 
         $(this).trigger('blur');
-        firstEditbarElement.focus();
+        firstEditbarElement.trigger('focus');
         evt.preventDefault();
       }
     }
@@ -348,7 +348,7 @@ const padeditbar = (function () {
         editbarPosition--;
         // Allow focus to shift back to end of row and start of row
         if (editbarPosition === -1) editbarPosition = focusItems.length - 1;
-        $(focusItems[editbarPosition]).focus();
+        $(focusItems[editbarPosition]).trigger('focus');
       }
 
       // On right arrow move to next button in editbar
@@ -359,7 +359,7 @@ const padeditbar = (function () {
         editbarPosition++;
         // Allow focus to shift back to end of row and start of row
         if (editbarPosition >= focusItems.length) editbarPosition = 0;
-        $(focusItems[editbarPosition]).focus();
+        $(focusItems[editbarPosition]).trigger('focus');
       }
     }
   };
@@ -377,7 +377,7 @@ const padeditbar = (function () {
 
     toolbar.registerCommand('settings', () => {
       toolbar.toggleDropDown('settings', () => {
-        $('#options-stickychat').focus();
+        $('#options-stickychat').trigger('focus');
       });
     });
 
@@ -386,24 +386,24 @@ const padeditbar = (function () {
         // If Import file input exists then focus on it..
         if ($('#importfileinput').length !== 0) {
           setTimeout(() => {
-            $('#importfileinput').focus();
+            $('#importfileinput').trigger('focus');
           }, 100);
         } else {
-          $('.exportlink').first().focus();
+          $('.exportlink').first().trigger('focus');
         }
       });
     });
 
     toolbar.registerCommand('showusers', () => {
       toolbar.toggleDropDown('users', () => {
-        $('#myusernameedit').focus();
+        $('#myusernameedit').trigger('focus');
       });
     });
 
     toolbar.registerCommand('embed', () => {
       toolbar.setEmbedLinks();
       toolbar.toggleDropDown('embed', () => {
-        $('#linkinput').focus().select();
+        $('#linkinput').trigger('focus').select();
       });
     });
 

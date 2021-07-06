@@ -30,7 +30,7 @@ describe('clear authorship colors button', function () {
         () => inner$('div span').first().attr('class').indexOf('author') !== -1);
 
     // IE hates you if you don't give focus to the inner frame bevore you do a clearAuthorship
-    inner$('div').first().focus();
+    inner$('div').first().trigger('focus');
 
     // get the clear authorship colors button and click it
     const $clearauthorshipcolorsButton = chrome$('.buttonicon-clearauthorship');
@@ -68,7 +68,7 @@ describe('clear authorship colors button', function () {
         () => inner$('div span').first().attr('class').indexOf('author') !== -1);
 
     // IE hates you if you don't give focus to the inner frame bevore you do a clearAuthorship
-    inner$('div').first().focus();
+    inner$('div').first().trigger('focus');
 
     // get the clear authorship colors button and click it
     const $clearauthorshipcolorsButton = chrome$('.buttonicon-clearauthorship');

@@ -58,7 +58,7 @@ function Ace2Inner(editorInfo, cssManagers) {
   let disposed = false;
 
   const focus = () => {
-    window.focus();
+    window.trigger('focus');
   };
 
   const iframe = window.frameElement;
@@ -2728,7 +2728,7 @@ function Ace2Inner(editorInfo, cssManagers) {
               .children('ul').first().children().first()
               .children().first().children().first();
           $(this).trigger('blur');
-          firstEditbarElement.focus();
+          firstEditbarElement.trigger('focus');
           evt.preventDefault();
         }
         if (
@@ -2740,7 +2740,7 @@ function Ace2Inner(editorInfo, cssManagers) {
           // Alt c focuses on the Chat window
           $(this).trigger('blur');
           parent.parent.chat.show();
-          parent.parent.$('#chatinput').focus();
+          parent.parent.$('#chatinput').trigger('focus');
           evt.preventDefault();
         }
         if (

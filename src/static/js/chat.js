@@ -38,7 +38,7 @@ exports.chat = (() => {
     },
     focus: () => {
       setTimeout(() => {
-        $('#chatinput').focus();
+        $('#chatinput').trigger('focus');
       }, 100);
     },
     // Make chat stick to right hand side of screen
@@ -231,7 +231,7 @@ exports.chat = (() => {
           // Alt c focuses on the Chat window
           $(this).trigger('blur');
           self.show();
-          $('#chatinput').focus();
+          $('#chatinput').trigger('focus');
           evt.preventDefault();
         }
       });
