@@ -209,7 +209,7 @@ const loadBroadcastSliderJS = (fireWhenAllScriptsAreLoaded) => {
 
     // assign event handlers to html UI elements after page load
     fireWhenAllScriptsAreLoaded.push(() => {
-      $(document).keyup((e) => {
+      $(document).on('keyup', (e) => {
         if (!e) e = window.event;
         const code = e.keyCode || e.which;
 

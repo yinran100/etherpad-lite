@@ -112,7 +112,7 @@ $(document).ready(() => {
 
   const updateHandlers = () => {
     // Search
-    $('#search-query').unbind('keyup').keyup(() => {
+    $('#search-query').unbind('keyup').on('keyup', () => {
       search($('#search-query').val());
     });
 
