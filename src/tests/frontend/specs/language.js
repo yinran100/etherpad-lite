@@ -16,7 +16,7 @@ describe('Language select and change', function () {
 
     // click on the settings button to make settings visible
     const $settingsButton = chrome$('.buttonicon-settings');
-    $settingsButton.click();
+    $settingsButton.trigger('click');
 
     // click the language button
     const $language = chrome$('#languagemenu');
@@ -45,7 +45,7 @@ describe('Language select and change', function () {
 
     // click on the settings button to make settings visible
     const $settingsButton = chrome$('.buttonicon-settings');
-    $settingsButton.click();
+    $settingsButton.trigger('click');
 
     // click the language button
     const $language = chrome$('#languagemenu');
@@ -74,7 +74,7 @@ describe('Language select and change', function () {
 
     // click on the settings button to make settings visible
     const $settingsButton = chrome$('.buttonicon-settings');
-    $settingsButton.click();
+    $settingsButton.trigger('click');
 
     // click the language button
     const $language = chrome$('#languagemenu');
@@ -96,7 +96,7 @@ describe('Language select and change', function () {
 
     // click on the settings button to make settings visible
     const $settingsButton = chrome$('.buttonicon-settings');
-    $settingsButton.click();
+    $settingsButton.trigger('click');
 
     // click the language button
     const $language = chrome$('#languagemenu');

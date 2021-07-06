@@ -120,7 +120,7 @@ $(document).ready(() => {
     $('#search-query').parent().bind('submit', () => false);
 
     // update & install
-    $('.do-install, .do-update').unbind('click').click(function (e) {
+    $('.do-install, .do-update').unbind('click').on('click', function (e) {
       const $row = $(e.target).closest('tr');
       const plugin = $row.data('plugin');
       if ($(this).hasClass('do-install')) {
@@ -134,7 +134,7 @@ $(document).ready(() => {
     });
 
     // uninstall
-    $('.do-uninstall').unbind('click').click((e) => {
+    $('.do-uninstall').unbind('click').on('click', (e) => {
       const $row = $(e.target).closest('tr');
       const pluginName = $row.data('plugin');
       socket.emit('uninstall', pluginName);
@@ -143,14 +143,14 @@ $(document).ready(() => {
     });
 
     // Sort
-    $('.sort.up').unbind('click').click(function () {
+    $('.sort.up').unbind('click').on('click', function () {
       search.sortBy = $(this).attr('data-label').toLowerCase();
       search.sortDir = false;
       search.offset = 0;
       search(search.searchTerm, search.results.length);
       search.results = [];
     });
-    $('.sort.down, .sort.none').unbind('click').click(function () {
+    $('.sort.down, .sort.none').unbind('click').on('click', function () {
       search.sortBy = $(this).attr('data-label').toLowerCase();
       search.sortDir = true;
       search.offset = 0;

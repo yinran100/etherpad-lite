@@ -12,7 +12,7 @@ describe('font select', function () {
 
     // click on the settings button to make settings visible
     const $settingsButton = chrome$('.buttonicon-settings');
-    $settingsButton.click();
+    $settingsButton.trigger('click');
 
     // get the font menu and RobotoMono option
     const $viewfontmenu = chrome$('#viewfontmenu');

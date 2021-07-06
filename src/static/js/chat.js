@@ -205,7 +205,7 @@ exports.chat = (() => {
       });
 
       // Clear the chat mentions when the user clicks on the chat input box
-      $('#chatinput').click(() => {
+      $('#chatinput').on('click', () => {
         chatMentions = 0;
         Tinycon.setBubble(0);
       });
@@ -247,7 +247,7 @@ exports.chat = (() => {
       // initial messages are loaded in pad.js' _afterHandshake
 
       $('#chatcounter').text(0);
-      $('#chatloadmessagesbutton').click(() => {
+      $('#chatloadmessagesbutton').on('click', () => {
         const start = Math.max(this.historyPointer - 20, 0);
         const end = this.historyPointer;
 

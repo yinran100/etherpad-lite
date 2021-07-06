@@ -527,7 +527,7 @@ describe('importexport.js', function () {
     const isVisible = () => popup.hasClass('popup-show');
     if (isVisible()) return;
     const button = helper.padChrome$('button[data-l10n-id="pad.toolbar.import_export.title"]');
-    button.click();
+    button.trigger('click');
     await helper.waitForPromise(isVisible);
   });
 

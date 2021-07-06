@@ -80,7 +80,7 @@ const init = () => {
     // get all the export links
     exportLinks = $('#export > .exportlink');
 
-    $('button#forcereconnect').click(() => {
+    $('button#forcereconnect').on('click', () => {
       window.location.reload();
     });
 

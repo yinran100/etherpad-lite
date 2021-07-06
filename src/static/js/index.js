@@ -51,7 +51,7 @@ $(() => {
     return false;
   });
 
-  $('#button').click(() => {
+  $('#button').on('click', () => {
     window.location = `p/${randomPadName()}`;
   });
 

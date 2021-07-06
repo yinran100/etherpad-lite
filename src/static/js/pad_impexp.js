@@ -164,7 +164,7 @@ const padimpexp = (() => {
       addImportFrames();
       $('#importfileinput').on('change', fileInputUpdated);
       $('#importform').unbind('submit').on('submit', fileInputSubmit);
-      $('.disabledexport').click(cantExport);
+      $('.disabledexport').on('click', cantExport);
     },
     disable: () => {
       $('#impexp-disabled-clickcatcher').show();

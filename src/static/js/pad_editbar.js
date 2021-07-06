@@ -67,7 +67,7 @@ ToolbarItem.prototype.bind = function (callback) {
   const self = this;
 
   if (self.isButton()) {
-    self.$el.click((event) => {
+    self.$el.on('click', (event) => {
       $(':focus').trigger('blur');
       callback(self.getCommand(), self);
       event.preventDefault();
@@ -145,7 +145,7 @@ const padeditbar = (function () {
         bodyKeyEvent(evt);
       });
 
-      $('.show-more-icon-btn').click(() => {
+      $('.show-more-icon-btn').on('click', () => {
         $('.toolbar').toggleClass('full-icons');
       });
       self.checkAllIconsAreDisplayedInToolbar();

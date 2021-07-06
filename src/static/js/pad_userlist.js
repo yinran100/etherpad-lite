@@ -369,15 +369,15 @@ const paduserlist = (() => {
       });
 
       // color picker
-      $('#myswatchbox').click(showColorPicker);
-      $('#mycolorpicker .pickerswatchouter').click(function () {
+      $('#myswatchbox').on('click', showColorPicker);
+      $('#mycolorpicker .pickerswatchouter').on('click', function () {
         $('#mycolorpicker .pickerswatchouter').removeClass('picked');
         $(this).addClass('picked');
       });
-      $('#mycolorpickersave').click(() => {
+      $('#mycolorpickersave').on('click', () => {
         closeColorPicker(true);
       });
-      $('#mycolorpickercancel').click(() => {
+      $('#mycolorpickercancel').on('click', () => {
         closeColorPicker(false);
       });
       //

@@ -34,7 +34,7 @@ describe('clear authorship colors button', function () {
 
     // get the clear authorship colors button and click it
     const $clearauthorshipcolorsButton = chrome$('.buttonicon-clearauthorship');
-    $clearauthorshipcolorsButton.click();
+    $clearauthorshipcolorsButton.trigger('click');
 
     // does the first div include an author class?
     const hasAuthorClass = inner$('div').first().attr('class').indexOf('author') !== -1;
@@ -72,7 +72,7 @@ describe('clear authorship colors button', function () {
 
     // get the clear authorship colors button and click it
     const $clearauthorshipcolorsButton = chrome$('.buttonicon-clearauthorship');
-    $clearauthorshipcolorsButton.click();
+    $clearauthorshipcolorsButton.trigger('click');
 
     // does the first div include an author class?
     let hasAuthorClass = inner$('div').first().attr('class').indexOf('author') !== -1;
@@ -91,7 +91,7 @@ describe('clear authorship colors button', function () {
     const $undoButton = chrome$('.buttonicon-undo');
 
     // click the button
-    $undoButton.click(); // shouldn't do anything
+    $undoButton.trigger('click'); // shouldn't do anything
     hasAuthorClass = inner$('div').first().attr('class').indexOf('author') !== -1;
     expect(hasAuthorClass).to.be(false);
 

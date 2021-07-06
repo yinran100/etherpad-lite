@@ -492,8 +492,8 @@ const pad = {
       // Prevent sticky chat or chat and users to be checked for mobiles
       const checkChatAndUsersVisibility = (x) => {
         if (x.matches) { // If media query matches
-          $('#options-chatandusers:checked').click();
-          $('#options-stickychat:checked').click();
+          $('#options-chatandusers:checked').trigger('click');
+          $('#options-stickychat:checked').trigger('click');
         }
       };
       const mobileMatch = window.matchMedia('(max-width: 800px)');

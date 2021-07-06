@@ -215,15 +215,15 @@ const loadBroadcastSliderJS = (fireWhenAllScriptsAreLoaded) => {
 
         if (code === 37) { // left
           if (e.shiftKey) {
-            $('#leftstar').click();
+            $('#leftstar').trigger('click');
           } else {
-            $('#leftstep').click();
+            $('#leftstep').trigger('click');
           }
         } else if (code === 39) { // right
           if (e.shiftKey) {
-            $('#rightstar').click();
+            $('#rightstar').trigger('click');
           } else {
-            $('#rightstep').click();
+            $('#rightstep').trigger('click');
           }
         } else if (code === 32) { // spacebar
           $('#playpause_button_icon').trigger('click');
@@ -276,12 +276,12 @@ const loadBroadcastSliderJS = (fireWhenAllScriptsAreLoaded) => {
       });
 
       // play/pause toggling
-      $('#playpause_button_icon').click((evt) => {
+      $('#playpause_button_icon').on('click', (evt) => {
         BroadcastSlider.playpause();
       });
 
       // next/prev saved revision and changeset
-      $('.stepper').click(function (evt) {
+      $('.stepper').on('click', function (evt) {
         switch ($(this).attr('id')) {
           case 'leftstep':
             setSliderPosition(getSliderPosition() - 1);
