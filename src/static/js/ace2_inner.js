@@ -58,7 +58,7 @@ function Ace2Inner(editorInfo, cssManagers) {
   let disposed = false;
 
   const focus = () => {
-    window.trigger('focus');
+    window.focus();
   };
 
   const iframe = window.frameElement;
