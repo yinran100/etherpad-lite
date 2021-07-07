@@ -42,11 +42,14 @@ exports.chat = (() => {
       }, 100);
     },
     // Make chat stick to right hand side of screen
-    stickToScreen(fromInitialCall) {
+    stickToScreen: (fromInitialCall) => {
+      if ($('#options-stickychat').prop('checked')) {
+        $('#options-stickychat').prop('checked', false);
+      }
       if (pad.settings.hideChat) {
         return;
       }
-      this.show();
+      exports.chat.show();
       isStuck = (!isStuck || fromInitialCall);
       $('#chatbox').hide();
       // Add timeout to disable the chatbox animations
