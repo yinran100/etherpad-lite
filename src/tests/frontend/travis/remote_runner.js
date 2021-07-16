@@ -53,6 +53,11 @@ const sauceTestWorker = async.queue(async ({name, pfx, browser, version, platfor
   });
   const driver = await builder.build();
   const url = `https://saucelabs.com/jobs/${(await driver.getSession()).getId()}`;
+  const debugOutput = () => {
+    const console = document.getElementById('debuglogs'); // eslint-disable-line no-undef
+    if (console == null) return '';
+    return console.innerText;
+  };
   try {
     await driver.get('http://localhost:9001/tests/frontend/');
     log(`Remote sauce test started! ${url}`, pfx);
@@ -88,6 +93,7 @@ const sauceTestWorker = async.queue(async ({name, pfx, browser, version, platfor
     }
   } finally {
     log(`Remote sauce test finished! ${url}`, pfx);
+    log(`Debug logs of ${pfx}: ${await driver.executeScript(debugOutput)}`);
     await driver.quit();
   }
 }, 6); // run 6 tests in parrallel
