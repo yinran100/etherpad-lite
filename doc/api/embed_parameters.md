@@ -73,3 +73,8 @@ Default: 0
 Focuses pad at specific line number and places caret at beginning of this line
 Special note: Is not a URL parameter but instead of a Hash value
 
+## focusOnEditor
+ * Boolean
+
+Default: true
+Disables focus on the editor upon initial page load if set to false.  Ideal for environments where the pad is embedded amongst other editable content.
