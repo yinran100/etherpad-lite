@@ -146,6 +146,14 @@ const getParameters = [
       Cookies.set('language', val);
     },
   },
+  {
+    name: 'focusOnEditor',
+    checkVal: 'false',
+    callback: (val) => {
+console.log("calling back ", val);
+      settings.focusOnEditor = val;
+    },
+  },
 ];
 
 const getParams = () => {
@@ -464,7 +472,7 @@ const pad = {
     const postAceInit = () => {
       padeditbar.init();
       setTimeout(() => {
-        if(ace_outer.parent === window.top) padeditor.ace.focus();
+        if(!settings.focusOnEditor) padeditor.ace.focus();
       }, 0);
       // if we have a cookie for always showing chat then show it
       if (padcookie.getPref('chatAlwaysVisible')) {
@@ -656,6 +664,7 @@ const pad = {
     pad.determineChatVisibility(isConnected && !isInitialConnect);
     pad.determineChatAndUsersVisibility(isConnected && !isInitialConnect);
     pad.determineAuthorshipColorsVisibility();
+    pad.determineFocus();
     setTimeout(() => {
       padeditbar.toggleDropDown('none');
     }, 1000);
@@ -667,6 +676,12 @@ const pad = {
       $('#options-stickychat').prop('checked', true); // set the checkbox to on
     } else {
       $('#options-stickychat').prop('checked', false); // set the checkbox for off
+    }
+  },
+  determineFocus: (asNowConnectedFeedback) => {
+    const focus = padcookie.getPref('focusOnEditor');
+    if (focus) {
+      padeditor.ace.focus();
     }
   },
   determineChatAndUsersVisibility: (asNowConnectedFeedback) => {

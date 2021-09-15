@@ -133,6 +133,7 @@ exports.padOptions = {
   noColors: false,
   showControls: true,
   showChat: true,
+  focusOnEditor: true,
   showLineNumbers: true,
   useMonospaceFont: false,
   userName: false,
