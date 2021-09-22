@@ -677,7 +677,7 @@ const pad = {
       $('#options-stickychat').prop('checked', false); // set the checkbox for off
     }
   },
-  determineFocus: (asNowConnectedFeedback) => {
+  determineFocus: () => {
     const focus = padcookie.getPref('focusOnEditor');
     if (focus) {
       padeditor.ace.focus();
