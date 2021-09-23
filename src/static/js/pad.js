@@ -148,10 +148,7 @@ const getParameters = [
   },
   {
     name: 'focusOnEditor',
-    checkVal: 'false',
-    callback: (val) => {
-      settings.focusOnEditor = val;
-    },
+    callback: (val) => settings.focusOnEditor = val !== 'false',
   },
 ];
 
