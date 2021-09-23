@@ -468,7 +468,7 @@ const pad = {
     const postAceInit = () => {
       padeditbar.init();
       setTimeout(() => {
-        if (!settings.focusOnEditor) padeditor.ace.focus();
+        if (settings.focusOnEditor) padeditor.ace.focus();
       }, 0);
       // if we have a cookie for always showing chat then show it
       if (padcookie.getPref('chatAlwaysVisible')) {
