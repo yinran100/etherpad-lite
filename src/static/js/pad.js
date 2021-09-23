@@ -663,7 +663,7 @@ const pad = {
     pad.determineChatVisibility(isConnected && !isInitialConnect);
     pad.determineChatAndUsersVisibility(isConnected && !isInitialConnect);
     pad.determineAuthorshipColorsVisibility();
-    pad.determineFocus();
+    if (padcookie.getPref('focusOnEditor')) padeditor.ace.focus();
     setTimeout(() => {
       padeditbar.toggleDropDown('none');
     }, 1000);
