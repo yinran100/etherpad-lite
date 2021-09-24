@@ -44,6 +44,7 @@ describe('clear authorship colors button', function () {
         () => chrome$('div.disconnected').attr('class').indexOf('visible') === -1);
   });
 
+  // Test for https://github.com/ether/etherpad-lite/issues/5128
   it("makes text clear authorship colors and checks it can't be undone", async function () {
     this.timeout(1500);
     const inner$ = helper.padInner$;
@@ -98,4 +99,46 @@ describe('clear authorship colors button', function () {
     await helper.waitForPromise(
         () => chrome$('div.disconnected').attr('class').indexOf('visible') === -1);
   });
+
+  it("clears authorship on single line list item", async function () {
+    this.timeout(1500);
+    const inner$ = helper.padInner$;
+    const chrome$ = helper.padChrome$;
+
+    // override the confirm dialogue functioon
+    helper.padChrome$.window.confirm = () => true;
+
+    // Set some new text
+    const sentText = 'Hello';
+
+    const textElement = inner$('div');
+    inner$('div').parent().children('div').remove();
+
+    // wait until everything is removed then send the string
+    await helper.waitForPromise(() => inner$('div').length === 1);
+    inner$('div').first().sendkeys(sentText);
+
+    // make it a list
+    const $insertunorderedlistButton = chrome$('.buttonicon-insertunorderedlist');
+    $insertunorderedlistButton.click();
+
+    // wait until we have the full value available
+    await helper.waitForPromise(
+        () => inner$('div span').first().attr('class').indexOf('author') !== -1);
+
+    // IE hates you if you don't give focus to the inner frame bevore you do a clearAuthorship
+    inner$('div').first().focus();
+
+    // get the clear authorship colors button and click it
+    const $clearauthorshipcolorsButton = chrome$('.buttonicon-clearauthorship');
+    $clearauthorshipcolorsButton.click();
+
+    // does the first div include an author class?
+    let hasAuthorClass = inner$('div').first().attr('class').indexOf('author') !== -1;
+    expect(hasAuthorClass).to.be(false);
+
+    await helper.waitForPromise(
+        () => chrome$('div.disconnected').attr('class').indexOf('visible') === -1);
+  });
+
 });
