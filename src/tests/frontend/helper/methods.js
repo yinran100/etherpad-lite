@@ -234,6 +234,5 @@ helper.clearPad = async () => {
  * SauceLabs (e.g. Safari)
  */
 helper.logDebugMsg = (msg) => {
-  const elem = $('#debuglogs');
-  elem.append(`\n${msg}`);
+  document.getElementById('debuglogs').append(`\n${msg}`);
 };
