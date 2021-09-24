@@ -66,7 +66,8 @@ describe('Admin > Settings', function () {
         });
         return httpStartTime;
       } catch (err) {
-        helper.logDebugMsg(`an error occurred: ${err.message} of type ${err.name}`);
+        document.getElementById('console').append(
+            `an error occurred: ${err.message} of type ${err.name}\n`);
         return null;
       }
     };
