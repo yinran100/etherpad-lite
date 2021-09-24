@@ -226,13 +226,3 @@ helper.clearPad = async () => {
     await helper.waitForPromise(() => helper.commits.length > commitsBefore);
   });
 };
-
-/**
- * Writes to an (hidden) element which is dropped into the console output of a workflow run
- *
- * This is useful for debugging failed tests when there is no console log output available on
- * SauceLabs (e.g. Safari)
- */
-helper.logDebugMsg = (msg) => {
-  document.getElementById('debuglogs').append(`\n${msg}`);
-};
