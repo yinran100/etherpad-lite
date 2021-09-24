@@ -77,4 +77,6 @@ Special note: Is not a URL parameter but instead of a Hash value
  * Boolean
 
 Default: true
-Disables focus on the editor upon initial page load if set to false.  Ideal for environments where the pad is embedded amongst other editable content.
+
+Disables focus on the editor upon initial page load if set to false. Ideal for
+environments where the pad is embedded amongst other editable content.

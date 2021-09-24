@@ -49,6 +49,7 @@ const socketio = require('./socketio');
 const hooks = require('./pluginfw/hooks');
 
 let receivedClientVars = false;
+let focusOnEditor = true;
 
 // This array represents all GET-parameters which can be used to change a setting.
 //   name:     the parameter-name, eg  `?noColors=true`  =>  `noColors`
@@ -148,7 +149,7 @@ const getParameters = [
   },
   {
     name: 'focusOnEditor',
-    callback: (val) => settings.focusOnEditor = val !== 'false',
+    callback: (val) => focusOnEditor = val !== 'false',
   },
 ];
 
@@ -156,7 +157,7 @@ const getParams = () => {
   // Tries server enforced options first..
   for (const setting of getParameters) {
     const value = clientVars.padOptions[setting.name];
-    if (value.toString() === setting.checkVal) {
+    if (value != null && value.toString() === setting.checkVal) {
       setting.callback(value);
     }
   }
@@ -467,9 +468,7 @@ const pad = {
 
     const postAceInit = () => {
       padeditbar.init();
-      setTimeout(() => {
-        if (settings.focusOnEditor) padeditor.ace.focus();
-      }, 0);
+      if (focusOnEditor) setTimeout(() => padeditor.ace.focus(), 0);
       // if we have a cookie for always showing chat then show it
       if (padcookie.getPref('chatAlwaysVisible')) {
         chat.stickToScreen(true); // stick it to the screen
@@ -660,7 +659,6 @@ const pad = {
     pad.determineChatVisibility(isConnected && !isInitialConnect);
     pad.determineChatAndUsersVisibility(isConnected && !isInitialConnect);
     pad.determineAuthorshipColorsVisibility();
-    if (padcookie.getPref('focusOnEditor')) padeditor.ace.focus();
     setTimeout(() => {
       padeditbar.toggleDropDown('none');
     }, 1000);
@@ -672,12 +670,6 @@ const pad = {
       $('#options-stickychat').prop('checked', true); // set the checkbox to on
     } else {
       $('#options-stickychat').prop('checked', false); // set the checkbox for off
-    }
-  },
-  determineFocus: () => {
-    const focus = padcookie.getPref('focusOnEditor');
-    if (focus) {
-      padeditor.ace.focus();
     }
   },
   determineChatAndUsersVisibility: (asNowConnectedFeedback) => {
