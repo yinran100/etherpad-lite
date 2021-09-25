@@ -105,7 +105,7 @@ describe('clear authorship colors button', function () {
     const chrome$ = helper.padChrome$;
 
     // override the confirm dialogue functioon
-    helper.padChrome$.window.confirm = () => true;
+    chrome$.window.confirm = () => true;
 
     // Set some new text
     const sentText = 'Hello';
