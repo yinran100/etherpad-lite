@@ -117,9 +117,7 @@ describe('clear authorship colors button', function () {
     await helper.waitForPromise(() => inner$('div').length === 1);
     inner$('div').first().sendkeys(sentText);
 
-    // make it a list
-    const $insertunorderedlistButton = chrome$('.buttonicon-insertunorderedlist');
-    $insertunorderedlistButton.click();
+    chrome$('.buttonicon-insertunorderedlist').click();
 
     // wait until we have the full value available
     await helper.waitForPromise(
