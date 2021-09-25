@@ -3,19 +3,6 @@
 describe('Admin > Settings', function () {
   this.timeout(480000);
 
-  let saveProgressReceived;
-  let observer;
-  // observes the #response element' attributes for changes
-  const observerJob = () => {
-    saveProgressReceived = false;
-    const observerCallback = (mutations, observer) => {
-      saveProgressReceived = true;
-    };
-    observer = new MutationObserver(observerCallback);
-    observer.observe(helper.admin$('#response')[0],
-        {attributes: true, childList: false, subtree: false});
-  };
-
   before(async function () {
     let success = false;
     $.ajax({
@@ -33,8 +20,17 @@ describe('Admin > Settings', function () {
         () => helper.admin$ && helper.admin$('.settings').val().length > 0, 5000);
   });
 
-
   it('Are Settings visible, populated, does save work', async function () {
+    const save = async () => {
+      const p = new Promise((resolve) => {
+        const observer = new MutationObserver(() => { resolve(); observer.disconnect(); });
+        observer.observe(
+            helper.admin$('#response')[0], {attributes: true, childList: false, subtree: false});
+      });
+      helper.admin$('#saveSettings').click();
+      await p;
+    };
+
     // save old value
     const settings = helper.admin$('.settings').val();
     const settingsLength = settings.length;
@@ -43,15 +39,7 @@ describe('Admin > Settings', function () {
     helper.admin$('.settings').val((_, text) => `/* test */\n${text}`);
     await helper.waitForPromise(
         () => settingsLength + 11 === helper.admin$('.settings').val().length, 5000);
-
-    observerJob();
-    // saves
-    helper.admin$('#saveSettings').click();
-    await helper.waitForPromise(() => saveProgressReceived, 5000);
-
-    // reset because we need to call it again later on
-    saveProgressReceived = false;
-    observer.disconnect();
+    await save();
 
     // new value for settings.json should now be saved
     // reset it to the old value
@@ -63,11 +51,7 @@ describe('Admin > Settings', function () {
     // replace the test value with a line break
     helper.admin$('.settings').val((_, text) => text.replace('/* test */\n', ''));
     await helper.waitForPromise(() => settingsLength === helper.admin$('.settings').val().length);
-
-    observerJob();
-    helper.admin$('#saveSettings').click(); // saves
-    await helper.waitForPromise(() => saveProgressReceived, 5000);
-    observer.disconnect();
+    await save();
 
     // settings should have the old value
     helper.newAdmin('settings');
