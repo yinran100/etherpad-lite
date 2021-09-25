@@ -124,9 +124,7 @@ describe('clear authorship colors button', function () {
     // IE hates you if you don't give focus to the inner frame bevore you do a clearAuthorship
     inner$('div').first().focus();
 
-    // get the clear authorship colors button and click it
-    const $clearauthorshipcolorsButton = chrome$('.buttonicon-clearauthorship');
-    $clearauthorshipcolorsButton.click();
+    chrome$('.buttonicon-clearauthorship').click();
 
     // does the first div include an author class?
     let hasAuthorClass = inner$('div').first().attr('class').indexOf('author') !== -1;
