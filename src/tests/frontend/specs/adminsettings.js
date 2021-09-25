@@ -71,7 +71,11 @@ describe('Admin > Settings', function () {
         return null;
       }
     };
-    const oldStartTime = await getStartTime();
+    let oldStartTime;
+    await helper.waitForPromise(async () => {
+      oldStartTime = await getStartTime();
+      return oldStartTime != null && oldStartTime > 0;
+    }, 1000, 500);
     helper.admin$('#restartEtherpad').click();
     await helper.waitForPromise(async () => {
       const startTime = await getStartTime();
