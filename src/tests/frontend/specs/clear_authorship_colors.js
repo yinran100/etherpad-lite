@@ -121,9 +121,6 @@ describe('clear authorship colors button', function () {
 
     await helper.waitForPromise(() => inner$('[class*="author"]').length > 0);
 
-    // IE hates you if you don't give focus to the inner frame bevore you do a clearAuthorship
-    inner$('div').first().focus();
-
     chrome$('.buttonicon-clearauthorship').click();
     await helper.waitForPromise(() => inner$('[class*="author"]').length === 0);
 
