@@ -119,9 +119,7 @@ describe('clear authorship colors button', function () {
 
     chrome$('.buttonicon-insertunorderedlist').click();
 
-    // wait until we have the full value available
-    await helper.waitForPromise(
-        () => inner$('div span').first().attr('class').indexOf('author') !== -1);
+    await helper.waitForPromise(() => inner$('[class*="author"]').length > 0);
 
     // IE hates you if you don't give focus to the inner frame bevore you do a clearAuthorship
     inner$('div').first().focus();
