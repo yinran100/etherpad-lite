@@ -125,10 +125,7 @@ describe('clear authorship colors button', function () {
     inner$('div').first().focus();
 
     chrome$('.buttonicon-clearauthorship').click();
-
-    // does the first div include an author class?
-    let hasAuthorClass = inner$('div').first().attr('class').indexOf('author') !== -1;
-    expect(hasAuthorClass).to.be(false);
+    await helper.waitForPromise(() => inner$('[class*="author"]').length === 0);
 
     await helper.waitForPromise(
         () => chrome$('div.disconnected').attr('class').indexOf('visible') === -1);
