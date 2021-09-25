@@ -101,7 +101,6 @@ describe('clear authorship colors button', function () {
   });
 
   it("clears authorship on single line list item", async function () {
-    this.timeout(1500);
     const inner$ = helper.padInner$;
     const chrome$ = helper.padChrome$;
 
