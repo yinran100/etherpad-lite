@@ -107,15 +107,8 @@ describe('clear authorship colors button', function () {
     // override the confirm dialogue functioon
     chrome$.window.confirm = () => true;
 
-    // Set some new text
-    const sentText = 'Hello';
-
-    const textElement = inner$('div');
-    inner$('div').parent().children('div').remove();
-
-    // wait until everything is removed then send the string
-    await helper.waitForPromise(() => inner$('div').length === 1);
-    inner$('div').first().sendkeys(sentText);
+    await helper.clearPad();
+    await helper.edit('Hello');
 
     chrome$('.buttonicon-insertunorderedlist').click();
 
