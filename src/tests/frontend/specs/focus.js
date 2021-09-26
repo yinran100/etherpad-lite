@@ -5,8 +5,8 @@ describe('caret focus', function () {
     before(async function () {
       await helper.aNewPad({
         params: {
-          focusOnEditor: 'false'
-        }
+          focusOnEditor: 'false',
+        },
       });
     });
 
@@ -14,15 +14,14 @@ describe('caret focus', function () {
       const activeElement = helper.padChrome$.document.activeElement;
       await helper.waitForPromise(() => $(activeElement).hasClass('readwrite'));
     });
-
   });
 
   describe('does focus on editor using focusOnEditor URL Param', function () {
     before(async function () {
       await helper.aNewPad({
         params: {
-          focusOnEditor: 'true'
-        }
+          focusOnEditor: 'true',
+        },
       });
     });
 
@@ -32,5 +31,4 @@ describe('caret focus', function () {
       await helper.waitForPromise(() => $(activeElement).attr('name') === 'ace_outer');
     });
   });
-
 });
